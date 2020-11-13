@@ -3,6 +3,8 @@ package ru.job4j.opp;
 public class Jukebox {
     public void music(int position) {
         if (position == 1) {
+            System.out.println("Пусть бегут неуклюже");
+        } else if (position == 2) {
             System.out.println("Спокойной ночи");
         } else {
             System.out.println("Песня не найдена");
@@ -12,5 +14,6 @@ public class Jukebox {
         Jukebox jukebox = new Jukebox();
         jukebox.music(1);
         jukebox.music(2);
+        jukebox.music(3);
     }
 }
