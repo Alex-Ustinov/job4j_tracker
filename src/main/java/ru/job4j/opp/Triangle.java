@@ -18,8 +18,12 @@ public class Triangle {
         return result;
     }
 
+    public boolean checkSides (double a, double b, double c) {
+        return a + b > c ? true : false;
+    }
+
     public boolean exist(double ab, double ac, double bc) {
-        if (ab > 0 && ac > 0 && bc > 0) {
+        if (checkSides(ab, ac, bc) && checkSides(ac, bc, ab) && checkSides(ab, bc, ac)) {
             return true;
         }
         return false;
