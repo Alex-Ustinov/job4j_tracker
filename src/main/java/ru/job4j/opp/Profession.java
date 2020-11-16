@@ -8,6 +8,8 @@ public class Profession {
     private String education;
     private Date birthday;
 
+    Profession() {}
+
     public Date getBirthday() {
         return birthday;
     }
