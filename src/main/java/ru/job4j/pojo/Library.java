@@ -33,7 +33,7 @@ public class Library {
             System.out.println(books[i].getName());
         }
         for(int i = 0; i < books.length; i++) {
-            if(books[i].getName() == "Clean code") {
+            if(books[i].getName().equals("Clean code")) {
                 System.out.println(books[i].getPages());
             }
         }
