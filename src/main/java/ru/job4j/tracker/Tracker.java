@@ -63,25 +63,16 @@ public class Tracker {
 
 
     public Item[] findAll() {
-        Item[] withOutNull = new Item[this.items.length];
-        int size = 0;
-        for (Item item : this.items) {
-            if (item != null) {
-                withOutNull[size] = item;
-                size++;
-            }
-        }
-        withOutNull = Arrays.copyOf(withOutNull, size);
-        return withOutNull;
+        return Arrays.copyOf(this.items, size);
     }
 
     public Item[] findByName(String key) {
-        Item[] resultSearch = new Item[this.items.length];
-        int size = 0;
+        Item[] resultSearch = new Item[this.size];
+        int count = 0;
         for(Item item : this.items) {
             if(item.getName().equals(key)) {
-                resultSearch[size] = item;
-                size++;
+                resultSearch[count] = item;
+                count++;
             }
         }
         return resultSearch;
