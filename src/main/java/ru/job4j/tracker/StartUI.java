@@ -20,11 +20,18 @@ public class StartUI {
         bug.setName("Bug");
         tracker.add(bug);
 
-        int id = bug.getId();
-        System.out.println("bug " + id);
-        Item bugWithDesc = new Item();
-        bugWithDesc.setName("Bug with description");
-        tracker.replace(id, bugWithDesc);
+        Item bug1 = new Item();
+        bug.setName("Bug1");
+        tracker.add(bug1);
+
+
+        Item bug2 = new Item();
+        bug.setName("Bug2");
+        tracker.add(bug2);
+
+
+        int id = bug1.getId();
+        tracker.delete(id);
 
 
     }

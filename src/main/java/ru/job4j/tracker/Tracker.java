@@ -32,14 +32,35 @@ public class Tracker {
 
     public boolean replace(int id, Item item) {
         int indexOldItem = indexOf(id);
-        int oldId = findById(id).getId();
-        item.setId(oldId);
+        item.setId(id);
         if (indexOldItem != -1) {
             this.items[indexOldItem] = item;
             return true;
         }
         return false;
     }
+
+    public boolean delete(int id) {
+        int indexDeletedItem = indexOf(id);
+        if(indexDeletedItem != -1) {
+            System.out.println(indexDeletedItem);
+            int nextDeleteItem = indexDeletedItem + 1;
+            for (int i = indexDeletedItem; i < this.items.length; i++) {
+                System.out.println(this.items[i].getName());
+                this.items[i] = findById(nextDeleteItem);
+            }
+            return true;
+        }
+
+        for (int y = 0; y < this.items.length; y++) {
+            if(this.items[y] != null) {
+                //System.out.println(this.items[y].getName());
+            }
+        }
+
+        return false;
+    }
+
 
     public Item[] findAll() {
         Item[] withOutNull = new Item[this.items.length];
