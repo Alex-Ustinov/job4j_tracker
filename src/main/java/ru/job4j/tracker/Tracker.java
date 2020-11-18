@@ -46,6 +46,7 @@ public class Tracker {
             for(int i = indexDeletedItem; i < size - indexDeletedItem + 1; i++) {
                 this.items[i] = this.items[i + 1];
             }
+            size--;
             return true;
         }
         return false;
