@@ -33,23 +33,23 @@ public class Tracker {
     public boolean replace(int id, Item item) {
         int indexOldItem = indexOf(id);
         item.setId(id);
-        if (indexOldItem != -1) {
+        boolean rsl = indexOldItem != -1;
+        if (rsl) {
             this.items[indexOldItem] = item;
-            return true;
         }
-        return false;
+        return rsl;
     }
 
     public boolean delete(int id) {
         int indexDeletedItem = indexOf(id);
-        if(indexDeletedItem != -1) {
+        boolean rsl = indexDeletedItem != -1;
+        if(rsl) {
             for(int i = indexDeletedItem; i < size - indexDeletedItem + 1; i++) {
                 this.items[i] = this.items[i + 1];
             }
             size--;
-            return true;
         }
-        return false;
+        return rsl;
     }
 
 
