@@ -43,21 +43,11 @@ public class Tracker {
     public boolean delete(int id) {
         int indexDeletedItem = indexOf(id);
         if(indexDeletedItem != -1) {
-            System.out.println(indexDeletedItem);
-            int nextDeleteItem = indexDeletedItem + 1;
-            for (int i = indexDeletedItem; i < this.items.length; i++) {
-                System.out.println(this.items[i].getName());
-                this.items[i] = findById(nextDeleteItem);
+            for(int i = indexDeletedItem; i < size - indexDeletedItem + 1; i++) {
+                this.items[i] = this.items[i + 1];
             }
             return true;
         }
-
-        for (int y = 0; y < this.items.length; y++) {
-            if(this.items[y] != null) {
-                //System.out.println(this.items[y].getName());
-            }
-        }
-
         return false;
     }
 

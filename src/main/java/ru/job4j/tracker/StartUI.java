@@ -14,25 +14,5 @@ public class StartUI {
         System.out.println(tracker1.findById(1).getName());
         */
 
-
-        Tracker tracker = new Tracker();
-        Item bug = new Item();
-        bug.setName("Bug");
-        tracker.add(bug);
-
-        Item bug1 = new Item();
-        bug.setName("Bug1");
-        tracker.add(bug1);
-
-
-        Item bug2 = new Item();
-        bug.setName("Bug2");
-        tracker.add(bug2);
-
-
-        int id = bug1.getId();
-        tracker.delete(id);
-
-
     }
 }
