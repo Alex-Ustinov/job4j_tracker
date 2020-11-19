@@ -19,10 +19,20 @@ public class StartUI {
                 String itemName = scanner.nextLine();
                 Item editItem = new Item();
                 editItem.setName(itemName);
-                tracker.replace(idItem, editItem);
+                boolean res = tracker.replace(idItem, editItem);
+                if (res) {
+                    System.out.println("Item was changed successfully");
+                } else {
+                    System.out.println("Something went wrong");
+                }
             } else if (select == 3) {
                 int idItem = Integer.valueOf(scanner.nextLine());
-                tracker.delete(idItem);
+                boolean res = tracker.delete(idItem);
+                if (res) {
+                    System.out.println("Item was deleted successfully");
+                } else {
+                    System.out.println("Something went wrong");
+                }
             } else if (select == 4) {
                 int idItem = Integer.valueOf(scanner.nextLine());
                 Item foundItem = tracker.findById(idItem);
