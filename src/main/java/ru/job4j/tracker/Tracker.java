@@ -43,13 +43,20 @@ public class Tracker {
     public boolean delete(int id) {
         int indexDeletedItem = indexOf(id);
         boolean rsl = indexDeletedItem != -1;
+        if (rsl) {
+            System.arraycopy(this.items, indexDeletedItem + 1, this.items, indexDeletedItem, size - indexDeletedItem);
+            this.items[size - 1] = null;
+            size--;
+        }
+        return rsl;
+        /*
         if(rsl) {
             for(int i = indexDeletedItem; i < size - indexDeletedItem + 1; i++) {
                 this.items[i] = this.items[i + 1];
             }
             size--;
         }
-        return rsl;
+         */
     }
 
 
