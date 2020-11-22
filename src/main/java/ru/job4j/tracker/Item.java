@@ -22,6 +22,10 @@ public class Item {
         this.name = name;
     }
 
+    Item(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }
