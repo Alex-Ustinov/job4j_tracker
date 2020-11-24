@@ -4,7 +4,7 @@ import org.junit.Test;
 import ru.job4j.opp.ConsoleInput;
 
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 public class StartUITest {
 
@@ -22,13 +22,14 @@ public class StartUITest {
         assertThat(tracker.findAll()[0].getName(), is("Item name"));
     }
 
+
     @Test
     public void whenReplaceItem() {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item(1,"Replaced item"));
         String replacedName = "New item name";
         Input in = new StubInput(
-                new String[] {"0" , "1", "Replaced item"}
+                new String[] {"0" , "1", replacedName, "1"}
         );
         UserAction[] actions = {
                 new ReplaceItemAction(),
@@ -40,15 +41,15 @@ public class StartUITest {
     @Test
     public void whenDeleteItem() {
         Tracker tracker = new Tracker();
-        String rsl = null;
+        Item item = tracker.add(new Item(1,"Delete item"));
         Input in = new StubInput(
-                new String[] {"0", "1"}
+                new String[] {"0", "1" ,"1"}
         );
         UserAction[] actions = {
                 new DeleteAction(),
                 new ExiteAction()
         };
         new StartUI().init(in, tracker, actions);
-        assertThat(tracker.findById(1).getName(), is(rsl));
+        assertNull(tracker.findById(1));
     }
 }
