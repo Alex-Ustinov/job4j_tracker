@@ -67,11 +67,12 @@ public class Tracker {
     public Item[] findByName(String key) {
         Item[] resultSearch = new Item[this.size];
         int count = 0;
-        for(Item item : this.items) {
-            if(item.getName().equals(key)) {
-                resultSearch[count] = item;
+        for(int i = 0; i < this.size; ++i) {
+            if(this.items[i].getName().equals(key)) {
+                resultSearch[count] = this.items[i];
                 count++;
             }
+
         }
         return resultSearch;
     }
