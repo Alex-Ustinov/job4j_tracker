@@ -1,6 +1,13 @@
 package ru.job4j.tracker;
 
 public class ReplaceItemAction implements UserAction {
+
+    private final Output out;
+
+    ReplaceItemAction(Output out) {
+        this.out = out;
+    }
+
     @Override
     public String name() {
         return "Edit item";
@@ -14,9 +21,9 @@ public class ReplaceItemAction implements UserAction {
         editItem.setName(itemName);
         boolean res = tracker.replace(idItem, editItem);
         if (res) {
-            System.out.println("Item was changed successfully");
+            out.println("Item was changed successfully");
         } else {
-            System.out.println("Something went wrong");
+            out.println("Something went wrong");
         }
         return res;
     }
