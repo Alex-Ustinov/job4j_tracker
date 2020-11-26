@@ -20,10 +20,10 @@ public class FindItemByNameAction implements UserAction {
         boolean rsl = items.length > 0;
         if (rsl) {
             for (Item item : items) {
-                out.println(item);
+                 out.println(item);
             }
         } else {
-            out.println("Заявки с таким именем не найдены");
+             out.println("Заявки с таким именем не найдены");
         }
         return rsl;
     }
