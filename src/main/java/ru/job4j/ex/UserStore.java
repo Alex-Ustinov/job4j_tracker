@@ -15,23 +15,27 @@ public class UserStore {
     }
 
     public static boolean validate (User user) throws UserInvalidException {
-        try {
-            if(user.isValid() && user.getUsername().length() < 3) {
-                return true;
-            }
-        } catch (UserInvalidException e) {
-            e.printStackTrace();
+        if(user.isValid() && user.getUsername().length() < 3) {
+            return true;
+        } else {
+            throw new UserInvalidException("User was not validated");
         }
-        return false;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UserNotFoundException, UserInvalidException {
+        UserStore userStore = new UserStore();
         User[] users = {
             new User("Petr Arsentev", true)
         };
-        User user = findUser(users, "Petr Arsentev");
-        if (validate(user)) {
-            System.out.println("This user has an access");
+        try {
+            User user = userStore.findUser(users, "Petr Arsentev");
+            if (userStore.validate(user)) {
+                System.out.println("This user has an access");
+            }
+        } catch (UserNotFoundException exceptionUserNotFound) {
+            exceptionUserNotFound.printStackTrace();
+        } catch (UserInvalidException exceptionIsNOtValid) {
+            exceptionIsNOtValid.printStackTrace();
         }
     }
 }
