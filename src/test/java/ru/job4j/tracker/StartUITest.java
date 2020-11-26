@@ -7,6 +7,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 public class StartUITest {
+
     @Test
     public void whenExit() {
         Output out = new StubOutput();
@@ -93,6 +94,19 @@ public class StartUITest {
                         "0. Find item by Id" + System.lineSeparator() +
                         "1. Exit" + System.lineSeparator()
         ));
+    }
+    
+    @Test(expected = ElementMenuNotFoundException.class)
+    public void whenInvalidExit() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] { "4" }
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new ExiteAction()
+        };
+
     }
 
 /*

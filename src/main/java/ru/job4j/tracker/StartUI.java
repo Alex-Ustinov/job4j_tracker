@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import ru.job4j.ex.ElementNotFoundException;
 import ru.job4j.opp.ConsoleInput;
 
 public class StartUI {
@@ -9,21 +10,18 @@ public class StartUI {
         this.out = out;
     }
 
-    public void init(Input input, Tracker tracker, UserAction[] actions) throws ElementNotFoundException {
+    public void init(Input input, Tracker tracker, UserAction[] actions) throws ElementMenuNotFoundException {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
             int select = input.askInt("Select: ");
             if (select < 0 || select >= actions.length) {
                 out.println("Wrong input, you can select: 0 .. " + (actions.length - 1));
-                continue;FindEl
+            } else {
+                throw new ElementMenuNotFoundException("Number can not be less null");
             }
-            try {
-                UserAction action = actions[select];
-                run = action.execute(input, tracker);
-            } catch (ElementNotFoundException e) {
-                e.pr
-            }
+            UserAction action = actions[select];
+            run = action.execute(input, tracker);
         }
     }
 
@@ -49,6 +47,11 @@ public class StartUI {
                 new FindItemByNameAction(output),
                 new ExiteAction()
         };
-        new StartUI(output).init(input, tracker, actions);
+        try {
+            new StartUI(output).init(input, tracker, actions);
+        } catch (ElementMenuNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 }
