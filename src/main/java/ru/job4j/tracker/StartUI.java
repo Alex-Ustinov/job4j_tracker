@@ -9,13 +9,21 @@ public class StartUI {
         this.out = out;
     }
 
-    public void init(Input input, Tracker tracker, UserAction[] actions) {
+    public void init(Input input, Tracker tracker, UserAction[] actions) throws ElementNotFoundException {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
             int select = input.askInt("Select: ");
-            UserAction action = actions[select];
-            run = action.execute(input, tracker);
+            if (select < 0 || select >= actions.length) {
+                out.println("Wrong input, you can select: 0 .. " + (actions.length - 1));
+                continue;FindEl
+            }
+            try {
+                UserAction action = actions[select];
+                run = action.execute(input, tracker);
+            } catch (ElementNotFoundException e) {
+                e.pr
+            }
         }
     }
 
@@ -28,7 +36,7 @@ public class StartUI {
 
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
-        Input input = new ConsoleInput();
+        Input input = new ValidateInput(); //new ConsoleInput();
         Tracker tracker = new Tracker();
         tracker.add(new Item(1, "Alex"));
         tracker.add(new Item(2, "Bill"));
