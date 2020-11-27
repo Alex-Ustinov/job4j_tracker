@@ -95,7 +95,7 @@ public class StartUITest {
                         "1. Exit" + System.lineSeparator()
         ));
     }
-    
+
     @Test(expected = ElementMenuNotFoundException.class)
     public void whenInvalidExit() {
         Output out = new StubOutput();
