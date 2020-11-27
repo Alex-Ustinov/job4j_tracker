@@ -10,15 +10,16 @@ public class StartUI {
         this.out = out;
     }
 
-    public void init(Input input, Tracker tracker, UserAction[] actions) throws ElementMenuNotFoundException {
+    public void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
             int select = input.askInt("Select: ");
+            System.out.println("select " + select);
+            System.out.println("actions.length " + actions.length);
             if (select < 0 || select >= actions.length) {
                 out.println("Wrong input, you can select: 0 .. " + (actions.length - 1));
-            } else {
-                throw new ElementMenuNotFoundException("Number can not be less null");
+                continue;
             }
             UserAction action = actions[select];
             run = action.execute(input, tracker);
@@ -47,11 +48,6 @@ public class StartUI {
                 new FindItemByNameAction(output),
                 new ExiteAction()
         };
-        try {
-            new StartUI(output).init(input, tracker, actions);
-        } catch (ElementMenuNotFoundException e) {
-            e.printStackTrace();
-        }
-
+        new StartUI(output).init(input, tracker, actions);
     }
 }
