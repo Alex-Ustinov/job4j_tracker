@@ -16,14 +16,12 @@ public class ValidateInput extends ConsoleInput {
     public int askInt(String question) {
         boolean invalid = true;
         int value = -1;
-        System.out.println("!!!!");
         do {
             try {
                 value = in.askInt(question);
                 System.out.println(value);
                 invalid = false;
             } catch (NumberFormatException nfe) {
-                System.out.println("&&&&&&");
                 out.println("Please enter validate data again.");
             }
         } while (invalid);
