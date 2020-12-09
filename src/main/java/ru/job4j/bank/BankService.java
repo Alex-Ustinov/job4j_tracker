@@ -9,23 +9,14 @@ public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
 
     public void addUser(User user) {
-        if(!users.containsKey(user)) {
-            users.put(user,new ArrayList<>());
-        }
+        users.putIfAbsent(user, new ArrayList<>());
     }
 
     public void addAccount(String passport, Account account) {
         User searchUser = findByPassport(passport);
         if (users.containsKey(searchUser)) {
             List<Account> accountUser = users.get(searchUser);
-            if (accountUser.size() > 0) {
-                for (Account eachAccount : accountUser) {
-                    if (!eachAccount.equals(account)) {
-                        accountUser.add(account);
-                        break;
-                    }
-                }
-            } else {
+            if (accountUser.indexOf(account) < 0 || accountUser.size() == 0) {
                 accountUser.add(account);
             }
         }
