@@ -10,7 +10,7 @@ import static org.junit.Assert.assertThat;
 
 public class ComperatorItemTest extends TestCase {
     public void compareItem() {
-        ComperatorItem сomperatorItem = new ComperatorItem();
+        ComperatorItems сomperatorItem = new ComperatorItems();
         Item item2 = new Item("Sam");
         Item item1 = new Item("Alex");
         ArrayList arrayList = new ArrayList<Item>();
