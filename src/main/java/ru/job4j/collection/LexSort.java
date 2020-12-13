@@ -14,7 +14,9 @@ public class LexSort implements Comparator<String> {
             int intLeftStringSymbol = Integer.parseInt(leftArrSymbol[i]);
             int intRightStringSymbol = Integer.parseInt(rightArrSymbol[i]);
             result = Integer.compare(intLeftStringSymbol, intRightStringSymbol);
-            if (result != 0) break;
+            if (result != 0) {
+                break;
+            }
         }
         return result;
     }
