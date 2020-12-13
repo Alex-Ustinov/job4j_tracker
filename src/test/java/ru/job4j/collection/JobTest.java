@@ -37,8 +37,8 @@ public class JobTest {
     public void whenCompatorDescByPrority() {
         Comparator<Job> cmpNamePriority = new JobDescByPriority();
         int rsl = cmpNamePriority.compare(
-                new Job("Fix bug", 1),
-                new Job("Impl task", 0)
+                new Job("Impl task", 0),
+                new Job("Fix bug", 1)
         );
         assertThat(rsl, lessThan(0));
     }
