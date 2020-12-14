@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,7 +8,8 @@ import java.util.Collections;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-public class ComperatorItemTest extends TestCase {
+public class ComperatorItemTest {
+    @Test
     public void compareItem() {
         ComperatorItems сomperatorItem = new ComperatorItems();
         Item item2 = new Item("Sam");

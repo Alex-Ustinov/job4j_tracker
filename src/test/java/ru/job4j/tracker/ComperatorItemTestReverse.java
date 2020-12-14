@@ -1,14 +1,15 @@
 package ru.job4j.tracker;
 
-import junit.framework.TestCase;
-
 import java.util.ArrayList;
 import java.util.Collections;
+
+import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-public class ComperatorItemTestReverse extends TestCase {
+public class ComperatorItemTestReverse {
+    @Test
     public void compareItem() {
         ComperatorItemReverse comperatorItemReverse = new ComperatorItemReverse();
         Item item2 = new Item("Sam");
