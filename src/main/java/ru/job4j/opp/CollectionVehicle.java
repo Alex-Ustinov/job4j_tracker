@@ -8,7 +8,7 @@ public class CollectionVehicle {
         Vehicle vehicleBus = (Vehicle) bus;
         Vehicle vehiclePlain = (Vehicle) plain;
         Vehicle vehicleTrain = (Vehicle) train;
-        Vehicle [] arrVehicles = new Vehicle[]{vehicleBus, vehiclePlain, vehicleTrain};
+        Vehicle[] arrVehicles = new Vehicle[]{vehicleBus, vehiclePlain, vehicleTrain};
         for (Vehicle vehicle : arrVehicles) {
             vehicle.move();
             System.out.println(vehicle.spentOil());

@@ -6,7 +6,7 @@ public class Library {
         Book dostoevsky = new Book();
         Book ernestHemingway = new Book();
         Book pushkin = new Book();
-        Book [] books = new Book[5];
+        Book[] books = new Book[5];
         stephenKing.setPages(400);
         stephenKing.setName("Misery");
         dostoevsky.setPages(450);
@@ -23,17 +23,17 @@ public class Library {
         books[4] = cleanCode;
         cleanCode.setPages(500);
         cleanCode.setName("Clean code");
-        for(int i = 0; i < books.length; i++) {
+        for (int i = 0; i < books.length; i++) {
             System.out.println(books[i].getName());
         }
         Book firstBook = books[0];
         books[0] = books[3];
         books[3] = firstBook;
-        for(int i = 0; i < books.length; i++) {
+        for (int i = 0; i < books.length; i++) {
             System.out.println(books[i].getName());
         }
-        for(int i = 0; i < books.length; i++) {
-            if(books[i].getName().equals("Clean code")) {
+        for (int i = 0; i < books.length; i++) {
+            if (books[i].getName().equals("Clean code")) {
                 System.out.println(books[i].getPages());
             }
         }

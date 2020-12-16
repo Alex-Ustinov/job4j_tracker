@@ -1,7 +1,7 @@
 package ru.job4j.opp;
 
 public class Good {
-    public String label(){
+    public String label() {
         return "";
     }
 }

@@ -18,7 +18,7 @@ public class Triangle {
         return result;
     }
 
-    public boolean checkSides (double a, double b, double c) {
+    public boolean checkSides(double a, double b, double c) {
         return a + b > c ? true : false;
     }
 

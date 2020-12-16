@@ -16,6 +16,7 @@ public class Product extends Good {
     public int discount() {
         return 0;
     }
+
     public String label() {
         return name + " " + price();
     }

@@ -28,13 +28,18 @@ public class Point {
     }
 
     public static void main(String[] args) {
+
         Point a = new Point(0,0);
+
         Point b = new Point(0,2);
+
         double dist = a.distance(b);
         System.out.println(dist);
 
         Point firstPoint = new Point(4, 7, 9);
+
         Point secondPoint = new Point(3, 6,1);
+
         double d = firstPoint.distance3d(secondPoint);
         System.out.println(d);
     }

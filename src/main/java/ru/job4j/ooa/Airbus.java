@@ -5,12 +5,12 @@ public final class Airbus extends Aircraft {
 
     private String name;
 
-    public String getName() {
-        return name;
-    }
-
     Airbus(String name) {
         super(name);
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

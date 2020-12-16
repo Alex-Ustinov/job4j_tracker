@@ -14,6 +14,7 @@ public class TrackerTest {
         Item result = tracker.findById(item.getId());
         assertThat(result.getName(), is(item.getName()));
     }
+
     @Test
     public void whenReplace() {
         Tracker tracker = new Tracker();
@@ -37,6 +38,7 @@ public class TrackerTest {
         tracker.delete(id);
         //assertThat(tracker.findById(id), is(nullValue()));
     }
+
     @Test
     public void whenFindByName() {
         Tracker tracker = new Tracker();

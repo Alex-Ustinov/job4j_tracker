@@ -14,10 +14,10 @@ public class StubInput implements Input {
     public int askInt(String question) {
         return Integer.parseInt(this.askStr(question));
     }
+
     @Override
     public String askStr(String question) {
         String test = this.answers[position++];
-        System.out.println("test "+test);
         return test;
     }
 }

@@ -1,7 +1,6 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
-import ru.job4j.opp.ConsoleInput;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
@@ -20,10 +19,11 @@ public class StartUITest {
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Exit" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                        + "0. Exit" + System.lineSeparator()
         ));
     }
+
     @Test
     public void whenFindAllAction() {
         Output out = new StubOutput();
@@ -31,20 +31,19 @@ public class StartUITest {
                 new String[] {"0", "1"}
         );
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item(1,"New item"));
         UserAction[] actions = {
-                new ShowAllItemsAction(out),
-                new ExiteAction()
+            new ShowAllItemsAction(out),
+            new ExiteAction()
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Show all items" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator() +
-                        "Item {id=1, name='New item'}" + System.lineSeparator() +
-                "Menu." + System.lineSeparator() +
-                        "0. Show all items" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                       + "0. Show all items" + System.lineSeparator()
+                       + "1. Exit" + System.lineSeparator()
+                        + "Item {id=1, name='New item'}" + System.lineSeparator()
+                        + "Menu." + System.lineSeparator()
+                        + "0. Show all items" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
         ));
     }
 
@@ -52,23 +51,22 @@ public class StartUITest {
     public void whenFindByNameAction() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0", "New item" ,"1"}
+                new String[] {"0", "New item", "1"}
         );
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item(1,"New item"));
         UserAction[] actions = {
                 new FindItemByNameAction(out),
                 new ExiteAction()
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Find items by name" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator() +
-                        "Item {id=1, name='New item'}" + System.lineSeparator() +
-                        "Menu." + System.lineSeparator() +
-                        "0. Find items by name" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                        + "0. Find items by name" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
+                        + "Item {id=1, name='New item'}" + System.lineSeparator()
+                        + "Menu." + System.lineSeparator()
+                        + "0. Find items by name" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
         ));
     }
 
@@ -76,23 +74,25 @@ public class StartUITest {
     public void whenFindByIdAction() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0", "1" ,"1"}
+                new String[] {"0", "1", "1"}
         );
         Tracker tracker = new Tracker();
+
         Item item = tracker.add(new Item(1,"New item"));
+
         UserAction[] actions = {
                 new FindItemByIdAction(out),
                 new ExiteAction()
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Find item by Id" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator() +
-                        "Item {id=1, name='New item'}" + System.lineSeparator() +
-                        "Menu." + System.lineSeparator() +
-                        "0. Find item by Id" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                        + "0. Find item by Id" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
+                        + "Item {id=1, name='New item'}" + System.lineSeparator()
+                        + "Menu." + System.lineSeparator()
+                        + "0. Find item by Id" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
         ));
     }
 
@@ -100,7 +100,7 @@ public class StartUITest {
     public void whenInvalidExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"1","0"}
+                new String[] {"1", "0"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {

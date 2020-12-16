@@ -3,7 +3,9 @@ package ru.job4j.tracker;
 public class TrackerEagerLoading {
     private static Tracker tracker = new Tracker();
 
-    private TrackerEagerLoading() {}
+    private TrackerEagerLoading() {
+
+    }
 
     public Tracker getInstance() {
         return this.tracker;

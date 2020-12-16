@@ -8,11 +8,13 @@ public class Item {
     private String name;
     private LocalDateTime created = LocalDateTime.now();
 
-    public LocalDateTime getCreated() {
-        return this.created;
+    Item() {
+
     }
 
-    Item() {}
+    Item(String name) {
+        this.name = name;
+    }
 
     Item(int id) {
         this.id = id;
@@ -23,8 +25,8 @@ public class Item {
         this.name = name;
     }
 
-    Item(String name) {
-        this.name = name;
+    public LocalDateTime getCreated() {
+        return this.created;
     }
 
     public int getId() {
@@ -45,20 +47,24 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item {" +
-                "id=" + id +
-                ", name='" + name +"'"+
-                '}';
+        return "Item {"
+                + "id=" + id
+                + ", name='" + name + "'"
+                + '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Item item = (Item) o;
-        return id == item.id &&
-                Objects.equals(name, item.name) &&
-                Objects.equals(created, item.created);
+        return id == item.id
+                && Objects.equals(name, item.name)
+                && Objects.equals(created, item.created);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package ru.job4j.opp;
 
-
 public final class LiquidationProduct extends Good {
     private Product product;
 
