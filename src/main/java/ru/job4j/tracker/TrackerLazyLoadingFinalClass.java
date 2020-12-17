@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 public class TrackerLazyLoadingFinalClass {
 
     private static final class Holder {
-        private static final Tracker TrackerHolder = new Tracker();
+        private static final Tracker TRACKER_HOLDER = new Tracker();
     }
 
     private TrackerLazyLoadingFinalClass() {
@@ -11,7 +11,7 @@ public class TrackerLazyLoadingFinalClass {
     }
 
     public static Tracker getInstance() {
-        return Holder.TrackerHolder;
+        return Holder.TRACKER_HOLDER;
     }
 
 }
