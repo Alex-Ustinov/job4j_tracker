@@ -78,7 +78,7 @@ public class StartUITest {
         );
         Tracker tracker = new Tracker();
 
-        Item item = tracker.add(new Item(1,"New item"));
+        tracker.add(new Item(1, "New item"));
 
         UserAction[] actions = {
                 new FindItemByIdAction(out),
