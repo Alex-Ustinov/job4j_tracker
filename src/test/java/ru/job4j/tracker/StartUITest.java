@@ -32,15 +32,14 @@ public class StartUITest {
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-            new ShowAllItemsAction(out),
-            new ExiteAction()
+                new ShowAllItemsAction(out),
+                new ExiteAction()
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
                 "Menu." + System.lineSeparator()
-                       + "0. Show all items" + System.lineSeparator()
-                       + "1. Exit" + System.lineSeparator()
-                        + "Item {id=1, name='New item'}" + System.lineSeparator()
+                        + "0. Show all items" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
                         + "Menu." + System.lineSeparator()
                         + "0. Show all items" + System.lineSeparator()
                         + "1. Exit" + System.lineSeparator()
@@ -57,16 +56,13 @@ public class StartUITest {
         UserAction[] actions = {
                 new FindItemByNameAction(out),
                 new ExiteAction()
-        };
+        };s
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
                 "Menu." + System.lineSeparator()
                         + "0. Find items by name" + System.lineSeparator()
                         + "1. Exit" + System.lineSeparator()
-                        + "Item {id=1, name='New item'}" + System.lineSeparator()
-                        + "Menu." + System.lineSeparator()
-                        + "0. Find items by name" + System.lineSeparator()
-                        + "1. Exit" + System.lineSeparator()
+                        + "Заявки с таким именем не найдены" + System.lineSeparator()
         ));
     }
 

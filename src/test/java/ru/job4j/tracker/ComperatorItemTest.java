@@ -15,10 +15,10 @@ public class ComperatorItemTest {
         ComperatorItems comperatorItems = new ComperatorItems();
         Item item2 = new Item("Sam");
         Item item1 = new Item("Alex");
-        ArrayList arrayList = new ArrayList<Item>();
+        ArrayList<Item> arrayList = new ArrayList<Item>();
         arrayList.add(item2);
         arrayList.add(item1);
         Collections.sort(arrayList, comperatorItems);
-        assertThat(arrayList.get(1), is(item2.getName()));
+        assertThat(arrayList.get(1).getName(), is(item2.getName()));
     }
 }
