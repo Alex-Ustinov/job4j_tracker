@@ -18,10 +18,7 @@ public class Departments {
                 tmp.add(start);
             }
         }
-        for (String dep : tmp) {
-            rsl.add(dep);
-        }
-        return rsl;
+        return new ArrayList<>(tmp);
     }
 
     public static void sortAsc(List<String> orgs) {

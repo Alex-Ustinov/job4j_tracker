@@ -56,7 +56,7 @@ public class StartUITest {
         UserAction[] actions = {
                 new FindItemByNameAction(out),
                 new ExiteAction()
-        };s
+        };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
                 "Menu." + System.lineSeparator()

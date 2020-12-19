@@ -1,5 +1,6 @@
 package ru.job4j.collection;
 
+import java.lang.reflect.Array;
 import java.util.Comparator;
 
 public class DepDescComp implements Comparator<String> {
@@ -10,8 +11,8 @@ public class DepDescComp implements Comparator<String> {
             char leftSymbol =  left.charAt(i);
             char rightSymbol =  right.charAt(i);
             result = Character.compare(leftSymbol, rightSymbol);
-            if (result != 0) {
-                return result;
+            if (result == 0) {
+                return left.compareTo(right);
             }
         }
         return result;

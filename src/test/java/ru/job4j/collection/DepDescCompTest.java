@@ -22,7 +22,7 @@ public class DepDescCompTest {
                 "K2",
                 "K2/SK1"
         );
-        //assertThat(rsl, lessThan(0));
+        assertThat(rsl, lessThan(0));
     }
 
 }
