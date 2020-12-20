@@ -49,7 +49,7 @@ public class Departments {
                 "K1/SK1/SSK2",
 
                 "K1/SK2"));
-        List<String>dep = fillGaps(arrayList);
+        List<String> dep = fillGaps(arrayList);
         DepDescComp depDescComp = new DepDescComp();
         Collections.sort(dep, depDescComp);
         //Collections.sort(dep);

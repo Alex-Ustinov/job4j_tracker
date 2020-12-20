@@ -49,7 +49,7 @@ public class Tracker {
     }
 
     public List<Item> findAll() {
-        return (ArrayList<Item>) items.clone();
+        return items;
     }
 
     public List<Item> findByName(String key) {
