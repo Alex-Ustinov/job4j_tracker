@@ -7,12 +7,24 @@ public class DepDescComp implements Comparator<String> {
     @Override
     public int compare(String left, String right) {
         int result = 0;
+        /*
         for (int i = 0; i < Math.min(left.length(), right.length()); i++) {
             char leftSymbol =  left.charAt(i);
             char rightSymbol =  right.charAt(i);
             result = Character.compare(leftSymbol, rightSymbol);
             if (result == 0) {
                 return left.compareTo(right);
+            }
+        }
+        */
+        String[] leftArr = left.split("/");
+        String[] rightArr = right.split("/");
+        for (int i = 0; i < Math.min(leftArr.length, rightArr.length); i++) {
+            result = rightArr[i].compareTo(leftArr[i]);
+            if (result == 0) {
+                return left.compareTo(right);
+            } else {
+                return result;
             }
         }
         return result;
