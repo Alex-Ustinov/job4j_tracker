@@ -53,7 +53,7 @@ public class Tracker {
     }
 
     public List<Item> findByName(String key) {
-        List<Item> resultSearch = new ArrayList();
+        List<Item> resultSearch = new ArrayList<>();
         for (Item item : this.items) {
             if (item.getName().equals(key)) {
                 resultSearch.add(item);

@@ -35,9 +35,9 @@ public class ValidateInputTest {
                     new String[] {"two", "1"}
             );
             ValidateInput input = new ValidateInput(in, out);
-            int selected = input.askInt("Enter menu:");
+            input.askInt("Enter menu:");
             assertThat(out.toString(),
-                    is(String.format("Please enter validate data again."
-                        + System.lineSeparator())));
+                    is(String.format("Please enter validate data again.%s",
+                        System.lineSeparator())));
         }
 }

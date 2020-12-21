@@ -1,23 +1,22 @@
 package ru.job4j.tracker;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-public class ComperatorItemTestReverse {
+public class ComparatorItemTestReverse {
     @Test
     public void compareItem() {
-        ComperatorItemReverse comperatorItemReverse = new ComperatorItemReverse();
+        ComparatorItemReverse comparatorItemReverse = new ComparatorItemReverse();
         Item item2 = new Item("Sam");
         Item item1 = new Item("Alex");
-        ArrayList arrayList = new ArrayList<Item>();
+        ArrayList<Item> arrayList = new ArrayList<>();
         arrayList.add(item2);
         arrayList.add(item1);
-        Collections.sort(arrayList, comperatorItemReverse);
-        assertThat(arrayList.get(1), is(item2.getName()));
+        arrayList.sort(comparatorItemReverse);
+        assertThat(arrayList.get(0).getName(), is(item2.getName()));
     }
 }
