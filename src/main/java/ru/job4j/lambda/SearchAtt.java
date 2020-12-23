@@ -35,7 +35,9 @@ public class SearchAtt {
         Comparator<Attachment> comparator = (left, right) -> {
             System.out.println("compare - " + right.getName().length() + " : " + left.getName().length());
             //return right.getName().length().compareTo(left.getName().length());
-            // Не понимаю почему в закоментированной строке получаю ошибку
+            
+            // Разобрался сам Причина в том что у int нет метода compareTo данный метод есть у Integer
+
             return Integer.compare(right.getName().length(), left.getName().length());
         };
     }
