@@ -1,6 +1,7 @@
 package ru.job4j.lambda;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.*;
 
@@ -30,6 +31,13 @@ public class SearchAtt {
         for (Attachment a2 : test2) {
             System.out.println(a2);
         }
+
+        Comparator<Attachment> comparator = (left, right) -> {
+            System.out.println("compare - " + right.getName().length() + " : " + left.getName().length());
+            //return right.getName().length().compareTo(left.getName().length());
+            // Не понимаю почему в закоментированной строке получаю ошибку
+            return Integer.compare(right.getName().length(), left.getName().length());
+        };
     }
 
     public static List<Attachment> filterSize(List<Attachment> list) {
