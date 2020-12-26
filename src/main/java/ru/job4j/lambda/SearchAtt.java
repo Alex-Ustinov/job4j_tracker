@@ -7,7 +7,7 @@ import java.util.function.*;
 
 public class SearchAtt {
 
-    public static List<Attachment>  filter(List<Attachment> list, Predicate<Attachment> condition) {
+    public static List<Attachment> filter(List<Attachment> list, Predicate<Attachment> condition) {
         List<Attachment> rsl = new ArrayList<>();
         for (Attachment att : list) {
             if (condition.test(att)) {
@@ -39,22 +39,10 @@ public class SearchAtt {
     }
 
     public static List<Attachment> filterSize(List<Attachment> list) {
-        List<Attachment> rsl = new ArrayList<>();
-        for (Attachment att : list) {
-            if (att.getSize() > 100) {
-                rsl.add(att);
-            }
-        }
-        return rsl;
+        return filter(list, (x) -> x.getSize() > 100);
     }
 
     public static List<Attachment> filterName(List<Attachment> list) {
-        List<Attachment> rsl = new ArrayList<>();
-        for (Attachment att : list) {
-            if (att.getName().contains("bug")) {
-                rsl.add(att);
-            }
-        }
-        return rsl;
+        return filter(list, (x) -> x.getName().contains("bug"));
     }
 }
