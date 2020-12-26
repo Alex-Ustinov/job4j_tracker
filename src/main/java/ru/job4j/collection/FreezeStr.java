@@ -28,6 +28,6 @@ public class FreezeStr {
                 hashMapLeft.put(letter, newAmountRepeat);
             }
         }
-        return true;
+        return arrLettersRight.length > 0 ? false : true;
     }
 }
