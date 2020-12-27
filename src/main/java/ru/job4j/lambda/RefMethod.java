@@ -15,8 +15,6 @@ public class RefMethod {
     }
 
     public static void cutOut(String value) {
-
-        val comvert = (name: String) -> name.length() > 10 ? name.substring(0, 10) + ".." : name;
         if (value.length() > 10) {
             System.out.println(value.substring(0, 10) + "..");
         } else {
