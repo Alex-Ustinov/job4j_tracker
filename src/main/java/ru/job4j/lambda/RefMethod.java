@@ -10,28 +10,15 @@ public class RefMethod {
                 "Ivan",
                 "Petr Arsentev"
         );
-        Consumer<String> out = (name) -> cutOut(name);
-        names.forEach(System.out::println(out));
+        Consumer<String> out = RefMethod::cutOut;
+        names.forEach(out);
     }
 
-    public static String cutOut(String value) {
-        //return value.length() > 10 ? System.out::println(value.substring(0, 10) + "..") : System.out::println(value);
-        /*
+    public static void cutOut(String value) {
         if (value.length() > 10) {
-            System.out::println(value.substring(0, 10) + "..")
+            System.out.println(value.substring(0, 10) + "..");
         } else {
-            System.out::println(value)
+            System.out.println(value);
         }
-        */
-        /*
-        String result = "";
-        if (value.length() > 10) {
-            result = value.substring(0, 10) + "..";
-        } else {
-            result = value;
-        }
-        return result;
-         */
-        return value.length() > 10 ? value.substring(0, 10) + ".." : value;
     }
 }
