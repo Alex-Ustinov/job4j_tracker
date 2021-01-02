@@ -2,9 +2,9 @@ package ru.job4j.streamAPI;
 
 import java.util.Comparator;
 
-public class AddressComparator implements Comparator<Address> {
+public class CityAddressComparator implements Comparator<Address> {
     @Override
-    public int compare(Object o1, Object o2) {
-        return o1.
+    public int compare(Address a1, Address a2) {
+        return a1.getCity().compareTo(a2.getCity());
     }
 }
