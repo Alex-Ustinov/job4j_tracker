@@ -7,10 +7,10 @@ public class Student {
 
     private String surname;
 
-    public Student(int score, String surname) {
+     Student(int score, String surname) {
         this.score = score;
         this.surname = surname;
-    }
+     }
 
     public int getScore() {
         return score;
