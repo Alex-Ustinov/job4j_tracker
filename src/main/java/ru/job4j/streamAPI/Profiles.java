@@ -1,5 +1,6 @@
 package ru.job4j.streamAPI;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,7 +9,7 @@ public class Profiles {
         return profiles
                 .stream()
                 .map(profile -> profile.getAddress())
-                .sorted(new CityAddressComparator())
+                .sorted(Comparator.comparing(Address::getCity))
                 .distinct()
                 .collect(Collectors.toList());
     }
