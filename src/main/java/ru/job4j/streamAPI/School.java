@@ -24,7 +24,8 @@ public class School {
             .collect(Collectors
                     .toMap(
                             student -> student.getSurname(),
-                            student -> student
+                            student -> student,
+                            (s1, s2) -> s1
         ));
     }
 }
