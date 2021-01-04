@@ -29,14 +29,18 @@ public class BankService {
 
     public Account findByRequisite(String passport, String requisite) {
         Optional<User> user = Optional.of(findByPassport(passport));
+        Optional<Account> result = Optional.empty();
         if (user.isPresent()) {
             List<Account> accountUser = users.get(user);
-            return accountUser
+            Optional<Account> userAccount = Optional.of(accountUser
                     .stream()
                     .filter(account -> account.getRequisite().equals(requisite))
-                    .findFirst().orElse(null);
+                    .findFirst());
+            if (userAccount.isPresent()) {
+                result = Optional.of(userAccount);
+            }
         }
-        return null;
+        return result;
     }
 
 
