@@ -1,6 +1,5 @@
 package ru.job4j.streamAPI;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -9,31 +8,38 @@ import java.util.stream.Collectors;
 
 public class EasyStream {
     private List<Integer> list = new ArrayList<>();
-    private EasyStream easyStream;
+    static private Builder builder = new Builder();
 
     public static EasyStream of(List<Integer> list) {
-        EasyStream easyStream = new EasyStream();
-        easyStream.list = list;
-        return easyStream.builder(easyStream);
+        return builder.buildList(list).builder();
     }
 
     public EasyStream map(Function<Integer, Integer> fun) {
-        easyStream.list = collect().stream().map(fun).collect(Collectors.toList());
-        return easyStream;
+        list = list.stream().map(fun).collect(Collectors.toList());
+        return this;
     }
 
     public EasyStream filter(Predicate<Integer> fun) {
-        easyStream.list = collect().stream().filter(fun).collect(Collectors.toList());
-        return easyStream;
+        list = list.stream().filter(fun).collect(Collectors.toList());
+        return this;
     }
 
     public List<Integer> collect() {
         return list;
     }
 
-    public EasyStream builder(EasyStream easyStream){
-        this.easyStream = easyStream;
-        return easyStream;
-    }
+    static class Builder {
+        private List<Integer> list;
 
+        public Builder buildList (List<Integer> list) {
+            this.list = list;
+            return this;
+        }
+
+        public EasyStream builder() {
+            EasyStream easyStream = new EasyStream();
+            easyStream.list = list;
+            return easyStream;
+        }
+    }
 }
