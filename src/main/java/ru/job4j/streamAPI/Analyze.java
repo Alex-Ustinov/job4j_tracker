@@ -28,13 +28,12 @@ public class Analyze {
     public static List<Tuple> averageScoreByPupil(Stream<Pupil> stream) {
         return stream
                 .flatMap(p -> p.getSubjects().stream())
-                .collect(groupingBy(s -> s.getName(), averagingDouble(Subject::getScore)))
+                .collect(groupingBy(s -> s.getName(), LinkedHashMap::new, averagingDouble(Subject::getScore)))
                 .entrySet()
                 .stream()
                 .map(s -> {
                     return new Tuple(s.getKey(), s.getValue());
                 })
-                .sorted((t1, t2) -> t2.getName().compareTo(t1.getName()))
                 .collect(Collectors.toList());
     }
 
