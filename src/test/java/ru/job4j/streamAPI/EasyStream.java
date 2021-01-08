@@ -4,23 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class EasyStream {
     private List<Integer> list = new ArrayList<>();
-    static private Builder builder = new Builder();
 
     public static EasyStream of(List<Integer> list) {
-        return builder.buildList(list).builder();
+        return new Builder().buildList(list).builder();
     }
 
     public EasyStream map(Function<Integer, Integer> fun) {
-        list = list.stream().map(fun).collect(Collectors.toList());
+        List<Integer> testList = new ArrayList<>();
+        for (Integer num : list) {
+            testList.add(fun.apply(num));
+        }
+        list = testList;
         return this;
     }
 
     public EasyStream filter(Predicate<Integer> fun) {
-        list = list.stream().filter(fun).collect(Collectors.toList());
+        List<Integer> testList = new ArrayList<>();
+        for (Integer num : list) {
+            if (fun.test(num)) {
+                testList.add(num);
+            }
+        }
+        list = testList;
         return this;
     }
 
