@@ -1,13 +1,13 @@
 package ru.job4j.tracker;
 
 public class TrackerEagerLoading {
-    private static Tracker tracker = new Tracker();
+    private static MemTracker tracker = new MemTracker();
 
     private TrackerEagerLoading() {
 
     }
 
-    public Tracker getInstance() {
+    public MemTracker getInstance() {
         return this.tracker;
     }
 }

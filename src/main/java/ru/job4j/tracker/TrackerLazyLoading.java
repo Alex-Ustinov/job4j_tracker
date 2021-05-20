@@ -1,15 +1,15 @@
 package ru.job4j.tracker;
 
 public class TrackerLazyLoading {
-    private static Tracker tracker;
+    private static MemTracker tracker;
 
     private TrackerLazyLoading() {
 
     }
 
-    public static Tracker getInstance() {
+    public static MemTracker getInstance() {
         if (tracker == null) {
-            tracker = new Tracker();
+            tracker = new MemTracker();
         }
         return tracker;
     }
