@@ -94,7 +94,7 @@ public class SqlTracker implements Store {
         return items;
     }
 
-    
+
     @Override
     public List<Item> findByName(String key) {
         String sql = "select * from items where name like '%?%'";
