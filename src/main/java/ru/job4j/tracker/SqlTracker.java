@@ -40,7 +40,6 @@ public class SqlTracker implements Store {
         String sql = "insert into items (id, name) values (?, ?)";
         Item result = null;
         try (PreparedStatement statement = cn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            //statement.setInt(1, item.getId());
             statement.setString(2, item.getName());
             try (ResultSet resultSet = statement.getGeneratedKeys()) {
                 if (resultSet.next()) {

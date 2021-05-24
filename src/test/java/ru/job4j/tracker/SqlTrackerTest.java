@@ -37,3 +37,14 @@ public class SqlTrackerTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void deleteItem() throws SQLException {
+        try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
+            tracker.add(new Item("name"));
+            assertThat(tracker.delete(1), is(1));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
