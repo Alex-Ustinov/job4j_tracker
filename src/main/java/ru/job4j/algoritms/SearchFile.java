@@ -11,6 +11,7 @@ public class SearchFile {
         searchFile(new File("D:\\"), arrayList);
 
     }
+
     public static void searchFile(File rootFile, List<File> fileList) {
         if (rootFile.isDirectory()) {
             File[] directoryFile = rootFile.listFiles();

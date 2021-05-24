@@ -6,8 +6,9 @@ public class QuickSort {
     public static void main(String[] args) {
         int[] arr = new int[] {15, 5, 7, 33, 26, 57, 88};
         System.out.println(arrayToString(arr));
-        quickSearch(arr, 0 , arr.length -1);
+        quickSearch(arr, 0, arr.length - 1);
     }
+
     private static void quickSearch(int[] arr, int from, int to) {
         if (from < to) {
 
@@ -19,6 +20,7 @@ public class QuickSort {
             quickSearch(arr, divideIndex, to);
         }
     }
+
     private static int partition(int[] arr, int from, int to) {
         int rightIndex = to;
         int leftIndex = from;
@@ -42,11 +44,13 @@ public class QuickSort {
         }
         return leftIndex;
     }
+
     private static void swap(int[] array, int index1, int index2) {
         int tmp  = array[index1];
         array[index1] = array[index2];
         array[index2] = tmp;
     }
+
     private static String arrayToString(int[] array) {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
@@ -59,11 +63,13 @@ public class QuickSort {
         sb.append("]");
         return sb.toString();
     }
+
     private static void printSortStep(int[] arr, int from, int to, int partitionIndex) {
         System.out.print(arrayToString(arr));
         System.out.print("\npartition at index: " + partitionIndex);
         System.out.print(", left: " + arrayToString(Arrays.copyOfRange(arr, from, partitionIndex)));
-        System.out.println(", right: " + arrayToString(Arrays.copyOfRange(arr, partitionIndex, to + 1)) + "\n");
+        System.out.println(", right:" + arrayToString(
+                Arrays.copyOfRange(arr, partitionIndex, to + 1)) + "\n");
     }
 
 }

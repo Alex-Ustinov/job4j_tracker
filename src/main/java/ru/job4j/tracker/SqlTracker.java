@@ -9,6 +9,10 @@ import java.util.Properties;
 public class SqlTracker implements Store {
     private Connection cn;
 
+    public SqlTracker(Connection connection) {
+        cn = connection;
+    }
+
     public void init() {
         try (InputStream in = SqlTracker.class.getClassLoader().getResourceAsStream("app.properties")) {
             Properties config = new Properties();
@@ -35,9 +39,14 @@ public class SqlTracker implements Store {
     public Item add(Item item) {
         String sql = "insert into items (id, name) values (?, ?)";
         Item result = null;
-        try (PreparedStatement statement = cn.prepareStatement(sql)) {
-            statement.setInt(1, item.getId());
+        try (PreparedStatement statement = cn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            //statement.setInt(1, item.getId());
             statement.setString(2, item.getName());
+            try (ResultSet resultSet = statement.getGeneratedKeys()) {
+                if (resultSet.next()) {
+                    item.setId(resultSet.getInt(1));
+                }
+            }
             if (statement.executeUpdate() > 0) {
                 result = item;
             }
@@ -49,10 +58,9 @@ public class SqlTracker implements Store {
 
     @Override
     public boolean replace(int id, Item item) {
-        String sql = "update items set id = ? name = ? where id = ?";
+        String sql = "update items set name = ? where id = ?";
         boolean result = false;
         try (PreparedStatement statement = cn.prepareStatement(sql)) {
-                statement.setInt(1, item.getId());
                 statement.setString(2, item.getName());
                 statement.setInt(3, item.getId());
                 result = statement.executeUpdate() > 0;
@@ -93,7 +101,7 @@ public class SqlTracker implements Store {
         }
         return items;
     }
-    
+
     @Override
     public List<Item> findByName(String key) {
         String sql = "select * from items where name like '%?%'";
@@ -120,12 +128,15 @@ public class SqlTracker implements Store {
         try (PreparedStatement statement = cn.prepareStatement(sql)) {
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
-                result.setId(resultSet.getInt("id"));
-                result.setName(resultSet.getString("name"));
+                if (resultSet.next()) {
+                    result.setId(resultSet.getInt("id"));
+                    result.setName(resultSet.getString("name"));
+                    return result;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return result;
+        return null;
     }
 }
