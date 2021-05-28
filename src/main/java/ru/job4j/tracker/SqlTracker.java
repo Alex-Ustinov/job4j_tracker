@@ -37,7 +37,7 @@ public class SqlTracker implements Store {
 
     @Override
     public Item add(Item item) {
-        String sql = "insert into items (id, name) values (?, ?)";
+        String sql = "insert into items (name) values (?)";
         Item result = null;
         try (PreparedStatement statement = cn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(2, item.getName());
@@ -60,8 +60,8 @@ public class SqlTracker implements Store {
         String sql = "update items set name = ? where id = ?";
         boolean result = false;
         try (PreparedStatement statement = cn.prepareStatement(sql)) {
-                statement.setString(2, item.getName());
-                statement.setInt(3, item.getId());
+                statement.setString(1, item.getName());
+                statement.setInt(2, item.getId());
                 result = statement.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,6 +106,7 @@ public class SqlTracker implements Store {
         String sql = "select * from items where name like '%?%'";
         List result = new ArrayList<Item>();
         try (PreparedStatement statement = cn.prepareStatement(sql)) {
+            statement.setString(1, key);
             try(ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     result.add(new Item(

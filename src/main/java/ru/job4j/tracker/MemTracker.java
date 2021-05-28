@@ -8,8 +8,8 @@ public class MemTracker {
     private int ids = 1;
 
     public Item add(Item item) {
-        item.setId(ids++);
-        items.add(item);
+
+
         return item;
     }
 
