@@ -40,8 +40,8 @@ public class SqlTrackerTest {
     @Test
     public void findByName() throws Exception {
         try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
-            tracker.add(new Item("aeroplane"));
-            assertThat(tracker.findByName("aeroplane").size(), is(1));
+            Item item = tracker.add(new Item("aeroplane"));
+            assertThat(tracker.findByName(item.getName()).size(), is(1));
         } catch (Exception e) {
 
         }
@@ -50,8 +50,8 @@ public class SqlTrackerTest {
     @Test
     public void findById() throws Exception {
         try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
-            tracker.add(new Item("frog"));
-            assertThat(tracker.findById(1).getName(), is("frog"));
+            Item item = tracker.add(new Item("frog"));
+            assertThat(tracker.findById(item.getId()).getName(), is("frog"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,17 +60,17 @@ public class SqlTrackerTest {
     @Test
     public void replace() throws Exception {
         try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
-            tracker.add(new Item("green"));
+            Item item = tracker.add(new Item("green"));
             Item newItem = new Item("red");
-            assertThat(tracker.replace(1,newItem), is(newItem.getName()));
+            assertThat(tracker.replace(item.getId(), newItem), is(true));
         }
     }
 
     @Test
     public void createItem() throws SQLException {
         try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
-            tracker.add(new Item("name"));
-            assertThat(tracker.findByName("name").size(), is(1));
+            Item item = tracker.add(new Item("name"));
+            assertThat(tracker.findByName(item.getName()).size(), is(1));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -79,8 +79,8 @@ public class SqlTrackerTest {
     @Test
     public void deleteItem() throws SQLException {
         try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
-            tracker.add(new Item("name"));
-            assertThat(tracker.delete(1), is(true));
+            Item item = tracker.add(new Item("name"));
+            assertThat(tracker.delete(item.getId()), is(true));
         } catch (Exception e) {
             e.printStackTrace();
         }
